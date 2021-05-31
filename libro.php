@@ -1,7 +1,6 @@
 <?php
-if (isset($_GET["libro"])) {
-    include("librosjson.php");
-    $datos = json_decode(info($_GET["libro"]));
+if (!isset($_GET["libro"])) {
+    header("location: /");
 }
 ?>
 
@@ -28,26 +27,61 @@ if (isset($_GET["libro"])) {
         -webkit-box-shadow: 0px 0px 35px -8px #000000;
         box-shadow: 0px 0px 35px -8px #000000;
     }
+
+    .libro {
+        border-radius: 10px;
+        -webkit-box-shadow: 0px 0px 5px -8px #000000;
+        box-shadow: 0px 0px 5px -8px #000000;
+        margin: 20px;
+        margin-left: 20%;
+        margin-right: 20%;
+        padding: 25px;
+    }
+
+    .centered {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    nav {
+        height: 60px;
+        text-align: center;
+        background-color: white;
+    }
+
+    nav img {
+        height: 50px;
+    }
 </style>
 
-<body>
-    <div class="imagen">
-        <img src="<?php echo $datos->imagen ?>" alt="">
-    </div>
-    <div class="datos">
-        <h1 class="titulo">
-            <?php echo $datos->nombre ?>
-        </h1>
-        <h2>
-            <?php echo $datos->autor ?>
-        </h2>
-        <h3>
-            <?php echo $datos->disponible ?>
-        </h3>
-        <h3>
-            <img src="<?php echo googlelogo($datos->editorial) ?>" alt="">
-        </h3>
-        
-    </div>
+
+<body  onload="buscar('<?php echo $_GET['libro']; ?>')">
+<nav>
+    <a href="./"><img style="display: inline;" src="logo.png" height="100%" alt=""></a>
+</nav>
+<div id="libros">
+</div>
 
 </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+<script>
+    function buscar(libro) {
+        document.getElementById("libros").innerHTML = "<img class='centered' src='loading.gif' >";
+        $.ajax({
+
+            type: 'post',
+            url: 'ajax.php',
+            data: {
+                libro: libro,
+            },
+            success: function(response) {
+                document.getElementById("libros").innerHTML = response;
+            },
+            error: function() {}
+        });
+    }
+</script>

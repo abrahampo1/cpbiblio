@@ -22,7 +22,7 @@ function googleimage($libro){
     
 }
 function googlelogo($logo){
-    $search_query = $logo ." logo";
+    $search_query = $logo ." editorial logo";
     $search_query = urlencode( $search_query );
     $html = file_get_html( "https://www.google.com/search?q=$search_query&tbm=isch" );
     $images = $html->find('img');
