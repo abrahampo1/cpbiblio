@@ -101,7 +101,11 @@ if (!isset($_GET["libro"])) {
         left: 0;
         top: 10;
     }
-
+    button{
+        text-decoration: none;
+        background: none;
+        border: none;
+    }
     .media {
         margin-left: -5px;
         margin-right: -5px;
