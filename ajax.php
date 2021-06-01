@@ -26,9 +26,9 @@ if(isset($_POST["libro"])){
                 </h2>
                 <h3 style="<?php
                             if (str_replace(" ", "", $datos[$i]["disponible"]) == "Dispoñible") {
-                                echo 'color: green;';
+                                echo 'color: green; !important';
                             }else{
-                                echo 'color: red';
+                                echo 'color: red; !important';
                             }
                             ?>">
                     <?php echo $datos[$i]["disponible"] ?>

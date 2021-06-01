@@ -51,7 +51,7 @@ function info($libro)
         $content = $response->getContent();
         $datosraw = explode("<td>", $content);
         $datos = explode("<p>", $datosraw[120]);
-        if($datos[0] == null || $datos[0] == ""){
+        if ($datos[0] == null || $datos[0] == "") {
             $haypag = false;
             break;
         }
@@ -67,55 +67,34 @@ function info($libro)
             for ($i = 0; $i != $dom->getElementsByTagName("a")->length; $i++) {
                 $name = utf8_decode($dom->getElementsByTagName("a")->item(0)->textContent);
                 if ($name == utf8_decode($dom->getElementsByTagName("a")->item($i)->textContent)) {
-                    $datosurl = utf8_decode($dom->getElementsByTagName("a")->item($i)->getAttribute('href'));
-                    $datos = explode("Rexistro=", $datosurl);
-                    $id_libro = explode("&", $datos[1]);
                     $id_libro = $id_libro[0];
-                    $url_xunta = "http://www.opacmeiga.rbgalicia.org/DetalleRexistro.aspx?CodigoBiblioteca=$biblioteca&Rexistro=$id_libro&Formato=Etiquetas";
-                    $httpClient = HttpClient::create();
-                    $response = $httpClient->request('POST', $url_xunta);
-                    error_reporting(E_ERROR | E_PARSE);
-                    $content = $response->getContent();
-                    $datos = explode("<td>", $content);
-                    $datos = explode("<p>", $datos[118]);
                     $dom = new DOMDocument();
                     $dom->loadHTML($datos[0]);
-                    $t = 1;
-                    $titulo = utf8_decode($dom->getElementsByTagName("font")->item($t)->textContent);
-                    if ($titulo == "Ampliar imaxe") {
-                        $t++;
-                        $titulo = utf8_decode($dom->getElementsByTagName("font")->item($t)->textContent);
-                    }
-                    $t = 1;
+                    $t = 0;
+                    $titulo = utf8_decode($dom->getElementsByTagName("a")->item($t)->textContent);
+                    $t++;
                     $autor = utf8_decode($dom->getElementsByTagName("a")->item($t)->textContent);
-                    if ($autor == "Ampliar imaxe") {
-                        $t++;
-                        $autor = utf8_decode($dom->getElementsByTagName("a")->item($t)->textContent);
-                    }
-                    $materia = utf8_decode($dom->getElementsByTagName("a")->item($t + 2)->textContent);
-                    $texto_completo = $dom->getElementsByTagName("tr")->item(3)->textContent;
-                    $texto = explode(":", $texto_completo);
-                    $editorial = explode("Publicación:", utf8_decode($texto_completo));
-                    $editorial = explode(":", $editorial[1]);
-                    $editorial = explode(",", $editorial[1]);
-                    $editorial = $editorial[0];
-                    $disponible = explode("Estado:", $texto_completo);
-                    $disponible = explode(":", $disponible[1]);
-                    $disponible = str_replace("Localización", "", utf8_decode($disponible[0]));
-                    $etiqueta = str_replace("Nº rexistro", "", utf8_decode($texto[10]));
-                    $idioma = utf8_decode($texto[5]);
-                    $titulo = explode("/", $titulo);
-                    $librojson[$array]->nombre = $titulo[0];
+                    $t++;
+                    $editorial = utf8_decode($dom->getElementsByTagName("a")->item($t)->textContent);
+                    $disponible = explode("Estado:", $datos[0]);
+                    $disponible = explode("Rexistro", $disponible[1]);
+                    $disponible = utf8_encode($disponible[0]);
+                    $disponible = utf8_decode($disponible);
+                    $disp = new DOMDocument();
+                    $disp->loadHTML($disponible);
+                    $disponible = $disp->getElementsByTagName("font")->item(0)->textContent;
+                    $disponible = utf8_decode($disponible);
+                    $etiqueta = explode("Localicación:", "", utf8_decode($datos[0]));
+                    $etiqueta = explode("Estado:", $etiqueta[1]);
+                    $librojson[$array]->nombre = $titulo;
                     $librojson[$array]->autor = $autor;
                     $librojson[$array]->editorial = $editorial;
-                    $librojson[$array]->materia = $materia;
                     $librojson[$array]->disponible = $disponible;
                     $librojson[$array]->etiqueta = $etiqueta;
-                    $librojson[$array]->idioma = $idioma;
-                    if (file_exists("img/portadas/" . $titulo[0] . ".png")) {
-                        $path_libro = "img/portadas/" . $titulo[0] . ".png";
+                    if (file_exists("img/portadas/" . $titulo . ".png")) {
+                        $path_libro = "img/portadas/" . $titulo . ".png";
                     } else {
-                        $path_libro = googleimage($titulo[0]);
+                        $path_libro = googleimage($titulo);
                     }
                     $librojson[$array]->imagen = $path_libro;
                     $array++;
