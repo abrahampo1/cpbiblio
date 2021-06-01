@@ -96,6 +96,12 @@ if (!isset($_GET["libro"])) {
         }
     }
 
+    .admin {
+        position: fixed;
+        left: 0;
+        top: 10;
+    }
+
     .media {
         margin-left: -5px;
         margin-right: -5px;
