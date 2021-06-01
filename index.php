@@ -84,14 +84,14 @@ include("librosjson.php");
     }
 
     nav {
-        height: 60px;
+        height: 100px;
         text-align: center;
         background-color: white;
         margin-bottom: 20px;
     }
 
     nav img {
-        height: 50px;
+        height: 80px;
     }
 
     .admin {
