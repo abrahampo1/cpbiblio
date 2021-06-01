@@ -3,7 +3,7 @@ include("librosjson.php");
 if(isset($_POST["buscar"])){
     $libros = json_decode(buscar($_POST["buscar"], 8));
         for ($i = 0; $i != count($libros->libros); $i++) {
-            echo '<div class="libro"><a href="libro?libro=' . utf8_decode($libros->libros[$i]->nombre) . '">';
+            echo '<div class="fade-in-bottom libro"><a href="libro?libro=' . utf8_decode($libros->libros[$i]->nombre) . '">';
             echo "<img src='" . $libros->libros[$i]->imagen . "'><br>";
             echo utf8_decode($libros->libros[$i]->nombre);
             echo '</a></div>';
@@ -13,7 +13,7 @@ if(isset($_POST["libro"])){
     $datos = json_decode(info($_POST["libro"]), true);
     for ($i = 1; $i != count($datos) + 1; $i++) {
     ?>
-        <div class="libro">
+        <div class="libro fade-in-bottom">
             <div class="imagen">
                 <img class="imag" src="<?php echo $datos[$i]["imagen"] ?>" alt="">
             </div>

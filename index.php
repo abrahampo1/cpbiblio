@@ -6,6 +6,7 @@ include("librosjson.php");
     * {
         font-family: 'Ubuntu', sans-serif;
     }
+
     .holder-libros img {
         margin: 10px;
         border-radius: 10px;
@@ -81,15 +82,91 @@ include("librosjson.php");
         top: 50%;
         transform: translate(-50%, -50%);
     }
+
     nav {
-            height: 60px;
-            text-align: center;
-            background-color: white;
-            margin-bottom: 20px;
+        height: 60px;
+        text-align: center;
+        background-color: white;
+        margin-bottom: 20px;
+    }
+
+    nav img {
+        height: 50px;
+    }
+
+    .fade-in-bottom {
+        -webkit-animation: fade-in-bottom .6s cubic-bezier(.39, .575, .565, 1.000) both;
+        animation: fade-in-bottom .6s cubic-bezier(.39, .575, .565, 1.000) both
+    }
+
+    @-webkit-keyframes fade-in-bottom {
+        0% {
+            -webkit-transform: translateY(50px);
+            transform: translateY(50px);
+            opacity: 0
         }
-        nav img{
-            height: 50px;
+
+        100% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+            opacity: 1
         }
+    }
+
+    @keyframes fade-in-bottom {
+        0% {
+            -webkit-transform: translateY(50px);
+            transform: translateY(50px);
+            opacity: 0
+        }
+
+        100% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+            opacity: 1
+        }
+    }
+
+    .puff-in-center {
+        -webkit-animation: puff-in-center .7s cubic-bezier(.47, 0.000, .745, .715) both;
+        animation: puff-in-center .7s cubic-bezier(.47, 0.000, .745, .715) both
+    }
+
+    @-webkit-keyframes puff-in-center {
+        0% {
+            -webkit-transform: scale(2);
+            transform: scale(2);
+            -webkit-filter: blur(4px);
+            filter: blur(4px);
+            opacity: 0
+        }
+
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            -webkit-filter: blur(0);
+            filter: blur(0);
+            opacity: 1
+        }
+    }
+
+    @keyframes puff-in-center {
+        0% {
+            -webkit-transform: scale(2);
+            transform: scale(2);
+            -webkit-filter: blur(4px);
+            filter: blur(4px);
+            opacity: 0
+        }
+
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            -webkit-filter: blur(0);
+            filter: blur(0);
+            opacity: 1
+        }
+    }
 </style>
 
 <head>
@@ -100,12 +177,12 @@ include("librosjson.php");
     <title>Biblioteca Asorey</title>
 </head>
 <nav>
-<a href="./"><img style="display: inline;" src="logo.png" height="100%" alt=""></a>
+    <a href="./"><img style="display: inline;" src="logo.png" height="100%" alt=""></a>
 </nav>
 <div class="buscador">
     <input type="text" id="libro" name="libro" placeholder="Busca o libro...">
     <br>
-    <button type="button" onclick="buscar()">Buscar</button>
+    <button type="button" id="search" onclick="buscar()">Buscar</button>
 </div>
 
 <div id="libros" class="holder-libros">
@@ -131,4 +208,14 @@ include("librosjson.php");
             error: function() {}
         });
     }
+</script>
+<script>
+    var input = document.getElementById("libro");
+
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.getElementById("search").click();
+  }
+});
 </script>
