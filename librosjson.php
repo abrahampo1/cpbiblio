@@ -84,6 +84,13 @@ function info($libro)
                     $disp->loadHTML($disponible);
                     $disponible = $disp->getElementsByTagName("font")->item(0)->textContent;
                     $disponible = utf8_decode($disponible);
+                    $editorial = explode("Editorial:", $datos[0]);
+                    $editorial = utf8_encode($editorial[1]);
+                    $editorial = utf8_decode($editorial);
+                    $disp = new DOMDocument();
+                    $disp->loadHTML($editorial);
+                    $editorial = $disp->getElementsByTagName("a")->item(0)->textContent;
+                    $editorial = utf8_decode($editorial);
                     $etiqueta = explode("Localicación:", "", utf8_decode($datos[0]));
                     $etiqueta = explode("Estado:", $etiqueta[1]);
                     $librojson[$array]->nombre = $titulo;
