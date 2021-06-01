@@ -97,6 +97,7 @@ include("librosjson.php");
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Biblioteca Asorey</title>
 </head>
 <nav>
 <a href="./"><img style="display: inline;" src="logo.png" height="100%" alt=""></a>

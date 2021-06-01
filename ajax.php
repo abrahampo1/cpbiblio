@@ -18,7 +18,7 @@ if(isset($_POST["libro"])){
                 <img class="imag" src="<?php echo $datos[$i]["imagen"] ?>" alt="">
             </div>
             <div class="datos">
-                <h1 class="titulo">
+                <h1 class="titulo" id="title">
                     <?php echo $datos[$i]["nombre"] ?>
                 </h1>
                 <h2>

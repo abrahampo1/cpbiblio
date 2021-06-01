@@ -9,6 +9,7 @@ if (!isset($_GET["libro"])) {
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cargando Libro...</title>
 </head>
 <style>
     * {
@@ -86,6 +87,7 @@ if (!isset($_GET["libro"])) {
             },
             success: function(response) {
                 document.getElementById("libros").innerHTML = response;
+                document.title = getElementById("title").innerHTML;
             },
             error: function() {}
         });
