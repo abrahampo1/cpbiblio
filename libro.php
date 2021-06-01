@@ -10,6 +10,7 @@ if (!isset($_GET["libro"])) {
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="iconos/css/all.css" rel="stylesheet">
+    <meta http-equiv = "refresh" content = "60; url = https://asorey.net" />
     <title>Cargando Libro...</title>
 </head>
 <style>

@@ -197,6 +197,7 @@ include("librosjson.php");
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="iconos/css/all.css" rel="stylesheet">
     <title>Biblioteca Asorey</title>
+    <meta http-equiv = "refresh" content = "60; url = https://asorey.net" />
 </head>
 <nav>
     <a href="./"><img style="display: inline;" src="logo.png" height="100%" alt=""></a>
