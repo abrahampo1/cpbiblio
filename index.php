@@ -94,6 +94,12 @@ include("librosjson.php");
         height: 50px;
     }
 
+    .admin {
+        position: fixed;
+        left: 0;
+        top: 10;
+    }
+
     .fade-in-bottom {
         -webkit-animation: fade-in-bottom .6s cubic-bezier(.39, .575, .565, 1.000) both;
         animation: fade-in-bottom .6s cubic-bezier(.39, .575, .565, 1.000) both
