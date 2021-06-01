@@ -91,6 +91,7 @@ include("librosjson.php");
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <nav>
 <a href="./"><img style="display: inline;" src="logo.png" height="100%" alt=""></a>
