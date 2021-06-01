@@ -27,7 +27,7 @@ include("librosjson.php");
     .libro {
         text-align: center;
         margin: 20px;
-        width: 20% !important;
+        width: 20%;
     }
 
     @media only screen and (max-width: 600px) {
