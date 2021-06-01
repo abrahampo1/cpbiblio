@@ -205,8 +205,9 @@ include("librosjson.php");
     </form>
 </nav>
 <div class="buscador">
-    <input type="text" id="libro" name="libro" placeholder="Busca o libro na biblioteca..." <?php if(isset($_POST["libro"])){echo "value='".$_POST["libro"]."' onchange='buscar()'";} ?>>
+    <input type="text" id="libro" name="libro" placeholder="Busca o libro na biblioteca..." <?php if(isset($_POST["libro"])){echo "value='".$_POST["libro"]."'";} ?>>
     <br>
+    
     <button type="button" id="search" onclick="buscar()">Buscar</button>
 </div>
 
@@ -244,3 +245,4 @@ include("librosjson.php");
         }
     });
 </script>
+<?php if(isset($_POST["libro"])){echo "<script>buscar()</script>";} ?>
