@@ -54,13 +54,13 @@ if (!isset($_GET["libro"])) {
     }
 
     nav {
-        height: 60px;
+        height: 100px;
         text-align: center;
         background-color: white;
     }
 
     nav img {
-        height: 50px;
+        height: 60px;
     }
 
     .fade-in-bottom {
