@@ -9,6 +9,7 @@ if (!isset($_GET["libro"])) {
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="iconos/css/all.css" rel="stylesheet">
     <title>Cargando Libro...</title>
 </head>
 <style>
@@ -53,13 +54,13 @@ if (!isset($_GET["libro"])) {
     }
 
     nav {
-        height: 60px;
+        height: 100px;
         text-align: center;
         background-color: white;
     }
 
     nav img {
-        height: 50px;
+        height: 60px;
     }
 
     .fade-in-bottom {
@@ -94,12 +95,40 @@ if (!isset($_GET["libro"])) {
             opacity: 1
         }
     }
+
+    .admin {
+        position: fixed;
+        left: 0;
+        top: 10;
+    }
+    button{
+        text-decoration: none;
+        background: none;
+        border: none;
+    }
+    .media {
+        margin-left: -5px;
+        margin-right: -5px;
+        font-size: 25px;
+        margin: 10px;
+        padding: 5px;
+    }
+
+    .media.off {
+        border-radius: 25px 0px 0px 25px;
+        margin-right: 0px !important;
+        font-size: 50px;
+
+    }
 </style>
 
 
 <body onload="buscar('<?php echo $_GET['libro']; ?>')">
     <nav>
         <a href="./"><img style="display: inline;" src="logo.png" height="100%" alt=""></a>
+        <form class="admin" method="post" action="/">
+            <button class="media off" value=""><i class="fas fa-arrow-left"></i></button>
+        </form>
     </nav>
     <div id="libros">
     </div>
