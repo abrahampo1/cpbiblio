@@ -205,7 +205,7 @@ include("librosjson.php");
     </form>
 </nav>
 <div class="buscador">
-    <input type="text" id="libro" name="libro" placeholder="Busca o libro...">
+    <input type="text" id="libro" name="libro" placeholder="Busca o libro na biblioteca...">
     <br>
     <button type="button" id="search" onclick="buscar()">Buscar</button>
 </div>
