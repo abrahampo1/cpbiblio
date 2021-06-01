@@ -7,6 +7,7 @@ if (!isset($_GET["libro"])) {
 <head>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <style>
@@ -39,6 +40,10 @@ if (!isset($_GET["libro"])) {
         padding: 25px;
     }
 
+    .titulo {
+        font-family: 'Pacifico', cursive;
+    }
+
     .centered {
         position: fixed;
         left: 50%;
@@ -58,12 +63,12 @@ if (!isset($_GET["libro"])) {
 </style>
 
 
-<body  onload="buscar('<?php echo $_GET['libro']; ?>')">
-<nav>
-    <a href="./"><img style="display: inline;" src="logo.png" height="100%" alt=""></a>
-</nav>
-<div id="libros">
-</div>
+<body onload="buscar('<?php echo $_GET['libro']; ?>')">
+    <nav>
+        <a href="./"><img style="display: inline;" src="logo.png" height="100%" alt=""></a>
+    </nav>
+    <div id="libros">
+    </div>
 
 </body>
 
