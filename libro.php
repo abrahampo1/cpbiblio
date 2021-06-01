@@ -87,7 +87,7 @@ if (!isset($_GET["libro"])) {
             },
             success: function(response) {
                 document.getElementById("libros").innerHTML = response;
-                document.title = getElementById("title").innerHTML;
+                document.title = document.getElementById("title").innerHTML;
             },
             error: function() {}
         });
