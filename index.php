@@ -167,6 +167,21 @@ include("librosjson.php");
             opacity: 1
         }
     }
+
+    .media {
+        margin-left: -5px;
+        margin-right: -5px;
+        font-size: 25px;
+        margin: 10px;
+        padding: 5px;
+    }
+
+    .media.off {
+        border-radius: 25px 0px 0px 25px;
+        margin-right: 0px !important;
+        font-size: 50px;
+
+    }
 </style>
 
 <head>
@@ -178,6 +193,9 @@ include("librosjson.php");
 </head>
 <nav>
     <a href="./"><img style="display: inline;" src="logo.png" height="100%" alt=""></a>
+    <form class="admin" method="post" action="https://musica.asorey.net">
+        <button class="media off" value=""><i class="fas fa-music"></i></button>
+    </form>
 </nav>
 <div class="buscador">
     <input type="text" id="libro" name="libro" placeholder="Busca o libro...">
@@ -212,10 +230,10 @@ include("librosjson.php");
 <script>
     var input = document.getElementById("libro");
 
-input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-    event.preventDefault();
-    document.getElementById("search").click();
-  }
-});
+    input.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById("search").click();
+        }
+    });
 </script>
