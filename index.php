@@ -103,7 +103,7 @@ include("librosjson.php");
 <a href="./"><img style="display: inline;" src="logo.png" height="100%" alt=""></a>
 </nav>
 <div class="buscador">
-    <input type="text" id="libro" name="libro">
+    <input type="text" id="libro" name="libro" placeholder="Busca o libro...">
     <br>
     <button type="button" onclick="buscar()">Buscar</button>
 </div>
