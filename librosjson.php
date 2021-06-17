@@ -22,10 +22,11 @@ function buscar($libro, $cantidad_libros = 5)
         $nombre_libro = str_replace("												", "", $nombre_libro);
         $nombre_libro = chop($nombre_libro);
         $nombre_libro = str_replace(["\n", "\r"], "", $nombre_libro);
-        if (file_exists("img/portadas/" . $nombre_libro . ".png")) {
-            $path_libro = "img/portadas/" . $nombre_libro . ".png";
+        $nombre_libro_google = $nombre_libro . " libro portada";
+        if (file_exists("img/portadas/" . $nombre_libro_google . ".png")) {
+            $path_libro = "img/portadas/" . $nombre_libro_google . ".png";
         } else {
-            $path_libro = googleimage($nombre_libro);
+            $path_libro = googleimage($nombre_libro_google);
         }
         $nombre_libro = utf8_encode($nombre_libro);
         $resultado_busqueda_libros->libros[$i]->nombre = $nombre_libro;
