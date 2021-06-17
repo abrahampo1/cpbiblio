@@ -10,13 +10,15 @@ include("librosjson.php");
     <link href="iconos/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="cpbiblioui.css">
     <title>Biblioteca Asorey</title>
+    <meta http-equiv = "refresh" content = "60; url = https://asorey.net" />
 </head>
 <nav>
     <a href="./"><img style="display: inline;" src="logo.png" height="100%" alt=""></a>
 </nav>
 <div class="buscador">
-    <input type="text" id="libro" name="libro" placeholder="Busca o libro na biblioteca...">
+    <input type="text" id="libro" name="libro" placeholder="Busca o libro na biblioteca..." <?php if(isset($_POST["libro"])){echo "value='".$_POST["libro"]."'";} ?>>
     <br>
+    
     <button type="button" id="search" onclick="buscar()">Buscar</button>
 </div>
 
@@ -54,3 +56,4 @@ include("librosjson.php");
         }
     });
 </script>
+<?php if(isset($_POST["libro"])){echo "<script>buscar()</script>";} ?>
